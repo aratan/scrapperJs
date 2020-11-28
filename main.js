@@ -7,9 +7,10 @@ const puppeteer = require('puppeteer');
     /* Dirección */
     const page = await browser.newPage();
     await page.goto("https://reactjs.org/");
+
     /* Acciones a realizar */
     const leerDatos = await page.evaluate(() => {
-        const datosCapturados = document.querySelectorAll('.css-1s44ra')
+        const datosCapturados = document.querySelectorAll('.css-1s44ra');
         return datosCapturados[0].innerHTML
     })
     console.log(leerDatos)
@@ -19,7 +20,10 @@ const puppeteer = require('puppeteer');
         path: 'example.png'
     });
 
-    
+    /* click */
+    const button = await page.evaluateHandle(() => document.querySelector('button'));
+    await button.click();
+
     /* siempre cerrar */
     await browser.close();
 })();
