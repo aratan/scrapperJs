@@ -25,7 +25,13 @@ const puppeteer = require('puppeteer');
         });
         /**/
 
-        /* click */
+        /* Mete datos en la caja de texto *
+        const html = await page.$eval('#algolia-doc-search', e => {
+            e.outerHTML = "whatever"
+            });
+        /**/
+
+        /* click *
         const button = await page.evaluateHandle(() => document.querySelector('.css-1ezwgyu'));
         await button.click();
 
@@ -41,5 +47,6 @@ const puppeteer = require('puppeteer');
     }
     /* siempre cerrar */
     await browser.close();
-    process.exit()
+    process.exit();
+
 })();
